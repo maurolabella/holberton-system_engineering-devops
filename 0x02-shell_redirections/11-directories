@@ -1,3 +1,2 @@
 #!/bin/bash
-echo $(ls -lR | grep "^d" | wc -l)
- 
+echo $(ls -laR | grep "^d"|grep -v "\.$") 
