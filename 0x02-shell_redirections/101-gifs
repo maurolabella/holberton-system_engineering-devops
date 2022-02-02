@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -lapR | grep -v / | grep "gif$" | rev | cut -b 5-| rev | tr -s " "| cut -f 5,9 -d " " | LC_ALL=C sort -k 2 
+ls -lapR | grep -v / | grep "gif$" | rev | cut -b 5-| rev | tr -s " "| cut -f 5,9 -d " " | LC_ALL=C sort -f -k2 
