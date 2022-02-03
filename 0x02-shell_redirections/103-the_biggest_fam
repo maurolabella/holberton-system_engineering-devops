@@ -1,2 +1,2 @@
 #!/bin/bash
-cat /dev/stdin | tr -s " " | cut -f 1 -d " " | grep -v 'host' | sort | uniq -c | sort -nr | head -11
+cat /dev/stdin|tr -s " "|cut -f 1 -d " "|grep -v 'host'|sort|uniq -c|sort -nr|:xhead -11
