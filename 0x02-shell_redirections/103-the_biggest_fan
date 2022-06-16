@@ -1,2 +1,2 @@
 #!/bin/bash
-cat /dev/stdin|tr -s " "|cut -f 1 -d " "|grep -v 'host'|sort|uniq -c|sort -nr|:xhead -11
+tail -n +2 | cut -f1 | sort | uniq -c | sort -gr | rev | cut -d' ' -f1 | rev | head -11
