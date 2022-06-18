@@ -5,7 +5,7 @@ FILE='/var/run/my_process.pid'
 
 function start
 {
-	sudo ./manage_my_process & 
+	./manage_my_process & 
 	echo "$!" > $FILE 
 	echo "manage_my_process started"
 	exit
@@ -26,7 +26,7 @@ function restart
 		kill "$(cat $FILE)"
 		rm $FILE
 	fi
-	sudo ./manage_my_process &
+	./manage_my_process &
 	echo "$!" > $FILE
 	echo "manage_my_process restarted"
 	exit 0
@@ -45,7 +45,3 @@ else
 		echo "Usage: manage_my_process {start|stop|restart}"
 		exit 1
 fi
-
-
-
-
