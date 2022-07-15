@@ -1,7 +1,7 @@
 Based on >https://oa-angel26.medium.com/web-infrastructure-design-4634a2e1b27c
 
 
-Web infrastructure design
+<h1>Web infrastructure design</h1>
 0. Simple Web Stack
 
 
