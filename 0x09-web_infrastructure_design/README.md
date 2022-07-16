@@ -130,9 +130,26 @@ On the other hand the Active-Passive setup, also made up of at least two nodes (
 
 A database Primary-Replica (Master-Replica) is a mechanism which enables data of one database server (the master) to be replicated or to be copied to one or more computers or database servers (the slaves), in order all users share the same level of information. This process leads to a distributed database in which users can quickly access data without interfering with each other.
 
-The database replication process can either be synchronous or asynchronous. In the first one, the replication process is done from the client server to the model server and then replicated to all the replica servers before the client is notified about the data replication. This method of replication may take longer to verify, however all data was copied before proceeding.
+The database replication process can either be synchronous or asynchronous. In the first one, the replication process is done simultanously for which all the replica servers are notified sequentially. This method of replication may take longer to verify, however all data is copied before proceeding.
 
-As in the asynchronous replication process, replication is done by sending data from the client to the model server, followed by a confirmation order to the client, who finally gives permission of copying to the replicas at an unspecified or monitored pace (Lutkevich, 2020)
+Synchronous replication usually implies writing data to primary storage and to replica simultaneously. That way, the primary copy and the replica always remain synchronized. Asynchronous replication products write data to primary storage first and then copy the data to the replica, so there is a delay before data is copied to a secondary site.
+
+Though asynchronous replication is more widely supported by array-, network- and host-based replication products, synchronous replication is the standard-bearer for higher-end, block-based storage arrays. It is also the data replication technique supported by most network-based replication products.
+
+For both data replication techniques, a storage array on Site A will send acknowledgement of the transaction to the host on Site A. Where the two techniques differ is the order of events that take place after the host sends the transaction to the local storage array.
+
+With asynchronous replication, the following happens:
+
+Site A host sends a write transaction to the Site A storage array.
+Site A storage array sends the transaction to cache and sends an acknowledgement to the host.
+Site A storage array sends the update to the Site B storage array after a delay.
+Site B storage array sends an acknowledgement to the Site A storage array.
+In synchronous replication -- just like with asynchronous replication -- the Site A host sends a write transaction to the Site A storage array. But with synchronous replication, the next steps in the process differ as follows:
+
+Site A storage array commits the transaction to cache and immediately sends the update to the Site B storage array.
+Site B storage array sends an acknowledgement back to the Site A storage array.
+Site A storage array sends an acknowledgement to the host.
+With synchronous replication, both arrays process the transaction before an acknowledgment is sent to the host, meaning the arrays will always be in sync. In asynchronous replication, the secondary storage array is usually a few transactions behind the primary array.
 
 **What is the difference between the primary node and the replica node in regard to the application.**
 
