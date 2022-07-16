@@ -102,7 +102,7 @@ From the client side, the browser is the one who always initiates the request to
 
 **Additional elements, why are you adding them?**
 
-The new configuration is composed of two master-servers and one slave-server. As master-servers will work on an Active-Active setup, their configuration must be identical, therefore we need to replicate every element we had in the simple web infrastructure configuration explained above. The load is going to be managed through a load-balancer (reverse proxy), which distributes the queries according to a Robin-Round algorithm. Finally an additional server will be needed to serve a replica or slave server, helping either to unload or simply avoid overloaded masters servers.
+The new configuration is composed of two master-servers (primary servers) and one slave-server(secondary server). As master-servers will work on an Active-Active setup, their configuration must be identical, therefore we need to replicate every element we had in the simple web infrastructure configuration explained above. The load is going to be managed through a load-balancer (reverse proxy), which distributes the queries according to a Robin-Round algorithm. Finally an additional server will be needed to serve a replica or slave server, helping either to unload or simply avoid overloaded masters servers.
 
 **What distribution algorithm your load balancer is configured with and how it works**
 
